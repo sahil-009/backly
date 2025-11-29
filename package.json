@@ -36,6 +36,9 @@
     "type": "git",
     "url": "https://github.com/sahil-009/apicraft"
   },
+  "funding":{
+    "url": "https://buymeacoffee.com/sahilmund"
+  },
   "devDependencies": {
     "jest": "^30.2.0"
   }

@@ -12,7 +12,7 @@ async function runCLI() {
     // Display welcome message
     console.log('');
     console.log(chalk.bold.blue('🚀 Welcome to ') + chalk.bold.magenta('APIcraft') + chalk.bold.blue(' - Backend Starter Generator'));
-    console.log(chalk.gray('   Build production-ready APIs in seconds'));
+    console.log(chalk.gray('   Template for building APIs'));
     console.log('');
 
     // Check for command-line flags

@@ -1,0 +1,7 @@
+tests/
+test-cli.sh
+plan.md
+.gitignore
+.git/
+.DS_Store
+*.log
