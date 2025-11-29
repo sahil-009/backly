@@ -1,0 +1,42 @@
+{
+  "name": "apicraft",
+  "version": "1.0.0",
+  "description": "Interactive backend starter generator",
+  "main": "index.js",
+  "bin": {
+    "apicraft": "./index.js"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "cli",
+    "backend",
+    "generator",
+    "template",
+    "express",
+    "nodejs",
+    "starter",
+    "boilerplate",
+    "typescript",
+    "javascript"
+  ],
+  "author": "Sahil Mund",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^8.2.5",
+    "ora": "^5.4.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sahil-009/apicraft"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
