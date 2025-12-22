@@ -7,3 +7,13 @@ build/
 coverage/
 .vscode/
 .idea/
+
+# Generated projects
+prime-ts/
+dry-run-test/
+test-dry-run/
+my-api/
+commerce/
+
+# Scripts
+*.sh

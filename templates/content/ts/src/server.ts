@@ -1,49 +1,33 @@
-import dotenv from 'dotenv';
-import express, { Request, Response } from 'express';
-import cors from 'cors';
-import morgan from 'morgan';
+import app from './app';
 import connectDB from './config/db';
-import errorHandler from './middleware/errorHandler';
+import { displayBanner } from './utils/banner';
+import { setWelcomePageData } from './app';
 
-// Load env vars
-dotenv.config();
+const PORT = process.env.PORT || 5000;
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const startServer = async () => {
+  await connectDB();
 
-// Connect to database
-connectDB();
+  const endpoints = [
+    'GET    /health',
+    'POST   /api/auth/login',
+    'POST   /api/auth/register',
+    'GET    /api/users',
+    'GET    /api/users/:id'
+  ];
 
-// Middleware
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  // Set data for welcome page
+  setWelcomePageData(endpoints);
 
-// Basic route
-app.get('/', (req: Request, res: Response) => {
-    res.json({
-        message: 'Welcome to Content API',
-        status: 'running',
-        timestamp: new Date().toISOString()
-    });
+  app.listen(PORT, () => {
+    displayBanner(PORT, endpoints);
+  });
+};
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err: Error) => {
+  console.error('❌ Unhandled Rejection:', err.message);
+  process.exit(1);
 });
 
-// Health check
-app.get('/api/health', (req: Request, res: Response) => {
-    res.json({
-        status: 'healthy',
-        uptime: process.uptime(),
-        database: 'connected',
-        timestamp: new Date().toISOString()
-    });
-});
-
-// Error handler
-app.use(errorHandler);
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
-    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-});
+startServer();
